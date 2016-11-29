@@ -14,9 +14,10 @@ app.get('/', function(req, res) {
   res.send("Servicio Desplegado con éxito!");
 });
 
-routes = require('./routes/tvshows')(app);
+routes = require('./routes/userShow')(app);
+routes = require('./routes/fondoShow')(app);
 
-mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
+mongoose.connect('mongodb://localhost/Innovo', function(err, res) {
 	if(err) {
 		console.log('ERROR: connecting to Database. ' + err);
 	} else {
