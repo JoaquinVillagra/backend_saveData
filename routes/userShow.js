@@ -1,7 +1,6 @@
 module.exports = function(app) {
 
   var userShow  = require('../models/userShow.js');
-  var fondoShow = require('../models/fondosShow.js');
 
   findAlluserShows = function(req, res) {
   	userShow.find(function(err, users) {
