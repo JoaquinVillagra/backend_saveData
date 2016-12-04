@@ -24,15 +24,31 @@ module.exports = function(app) {
   	});
   };
 
+  findByIdGoogle = function(req, res) {
+    userShow.find({'id_google': req.params.id_google}).limit(1).exec(function(err, user) {
+      if(!err) {
+        console.log('GET /user/' + req.params.id_google);
+        if(user.length == 0){
+          res.send('ERROR');
+        }
+        else{
+          res.send(user[0]);
+        }
+      } else {
+        console.log('ERROR: ' + err);
+      }
+    });
+  };
+
 
   adduserShow = function(req, res) {
   	console.log('POST');
   	console.log(req.body);
 
   	var user = new userShow({
+      id_google  : req.body.id_google,
   		nombre     : req.body.nombre,
       correo     : req.body.correo,
-      password   : req.body.password,
       edad       : req.body.edad,
       empresa    : req.body.empresa,
       comercio   : req.body.comercio,
@@ -56,9 +72,9 @@ module.exports = function(app) {
   //PUT - Update a register already exists
   updateuserShow = function(req, res) {
   	userShow.findById(req.params.id, function(err, user) {
+      user.id_google  = req.body.id_google;
       user.nombre     = req.body.nombre;
   		user.correo     = req.body.correo;
-  		user.password   = req.body.password;
   		user.edad       = req.body.edad;
   		user.empresa    = req.body.empresa;
   		user.comercio   = req.body.comercio;
@@ -81,7 +97,7 @@ module.exports = function(app) {
   	userShow.findById(req.params.id, function(err, user) {
   		user.remove(function(err) {
   			if(!err) {
-  				console.log('Removed');
+  				console.log('Eliminado');
   			} else {
   				console.log('ERROR: ' + err);
   			}
@@ -92,6 +108,7 @@ module.exports = function(app) {
   //Link routes and functions
   app.get('/users', findAlluserShows);
   app.get('/user/:id', findById);
+  app.get('/user_google/:id_google', findByIdGoogle);
   app.post('/user', adduserShow);
   app.put('/user/:id', updateuserShow);
   app.delete('/user/:id', deleteuserShow);
