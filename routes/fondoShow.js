@@ -35,10 +35,7 @@ module.exports = function(app) {
       quienes:      req.body.quienes ,  
       apoyo:        req.body.apoyo,
       como:         req.body.como,
-      link1:        req.body.link1,
-      link2:        req.body.link2,
-      link3:        req.body.link3,
-      link4:        req.body.link4
+      link:         req.body.link
   	});
 
   	fondo.save(function(err) {
@@ -60,10 +57,7 @@ module.exports = function(app) {
       fondo.quienes     =  req.body.quienes ;  
       fondo.apoyo       =  req.body.apoyo;
       fondo.como        =  req.body.como;
-      fondo.link1       =  req.body.link1;
-      fondo.link2       =  req.body.link2;
-      fondo.link3       =  req.body.link3;
-      fondo.link4       =  req.body.link4;
+      fondo.link        =  req.body.link;
   		fondo.save(function(err) {
   			if(!err) {
   				console.log('Updated');
