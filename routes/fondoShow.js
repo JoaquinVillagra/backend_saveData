@@ -13,6 +13,39 @@ module.exports = function(app) {
   	});
   };
 
+  findSercoFosisFondos = function(req, res) {
+    fondoShow.find({origen:{$in:["fosis","sercotec"]}}, function(err, fondos) {
+      if(!err) {
+        console.log('GET /fondos_Sercotec_Fosis')
+        res.send(fondos);
+      } else {
+        console.log('ERROR: ' + err);
+      }
+    });
+  };
+
+  findCorfoFondos = function(req, res) {
+    fondoShow.find({origen: "corfo"}, function(err, fondos) {
+      if(!err) {
+        console.log('GET /fondos_corfo')
+        res.send(fondos);
+      } else {
+        console.log('ERROR: ' + err);
+      }
+    });
+  };
+
+  findGoreFondos = function(req, res) {
+    fondoShow.find({origen: "gore"}, function(err, fondos) {
+      if(!err) {
+        console.log('GET /fondos_corfo')
+        res.send(fondos);
+      } else {
+        console.log('ERROR: ' + err);
+      }
+    });
+  };
+
   findById = function(req, res) {
   	fondoShow.findById(req.params.id, function(err, fondo) {
   		if(!err) {
@@ -30,6 +63,7 @@ module.exports = function(app) {
   	console.log(req.body);
 
   	var fondo = new fondoShow({
+      origen:       req.body.origen,
   		titulo:       req.body.titulo,
       descripcion:  req.body.descripcion,
       quienes:      req.body.quienes ,  
@@ -52,6 +86,7 @@ module.exports = function(app) {
   //PUT - Update a register already exists
   updatefondoShow = function(req, res) {
   	fondoShow.findById(req.params.id, function(err, fondo) {
+      fondo.origen      =  req.body.origen;
       fondo.titulo      =  req.body.titulo;
       fondo.descripcion =  req.body.descripcion;
       fondo.quienes     =  req.body.quienes ;  
@@ -83,6 +118,9 @@ module.exports = function(app) {
 
   //Link routes and functions
   app.get('/fondos', findAllfondoShows);
+  app.get('/fondos1', findSercoFosisFondos);
+  app.get('/fondos2', findCorfoFondos);
+  app.get('/fondos3', findGoreFondos);
   app.get('/fondo/:id', findById);
   app.post('/fondo', addfondoShow);
   app.put('/fondo/:id', updatefondoShow);
