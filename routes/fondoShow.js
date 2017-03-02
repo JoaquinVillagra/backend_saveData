@@ -5,10 +5,10 @@ module.exports = function(app) {
   findAllfondoShows = function(req, res) {
   	fondoShow.find(function(err, fondos) {
   		if(!err) {
-        console.log('GET /fondos')
+        //console.log('GET /fondos')
   			res.send(fondos);
   		} else {
-  			console.log('ERROR: ' + err);
+  			//console.log('ERROR: ' + err);
   		}
   	});
   };
@@ -16,10 +16,10 @@ module.exports = function(app) {
   findSercoFosisFondos = function(req, res) {
     fondoShow.find({origen:{$in:["fosis","sercotec"]}}, function(err, fondos) {
       if(!err) {
-        console.log('GET /fondos_Sercotec_Fosis')
+        //console.log('GET /fondos_Sercotec_Fosis')
         res.send(fondos);
       } else {
-        console.log('ERROR: ' + err);
+        //console.log('ERROR: ' + err);
       }
     });
   };
@@ -27,10 +27,10 @@ module.exports = function(app) {
   findCorfoFondos = function(req, res) {
     fondoShow.find({origen: "corfo"}, function(err, fondos) {
       if(!err) {
-        console.log('GET /fondos_corfo')
+        //console.log('GET /fondos_corfo')
         res.send(fondos);
       } else {
-        console.log('ERROR: ' + err);
+        //console.log('ERROR: ' + err);
       }
     });
   };
@@ -38,10 +38,10 @@ module.exports = function(app) {
   findGoreFondos = function(req, res) {
     fondoShow.find({origen: "gore"}, function(err, fondos) {
       if(!err) {
-        console.log('GET /fondos_corfo')
+        //console.log('GET /fondos_corfo')
         res.send(fondos);
       } else {
-        console.log('ERROR: ' + err);
+        //console.log('ERROR: ' + err);
       }
     });
   };
@@ -49,18 +49,18 @@ module.exports = function(app) {
   findById = function(req, res) {
   	fondoShow.findById(req.params.id, function(err, fondo) {
   		if(!err) {
-        console.log('GET /fondo/' + req.params.id);
+        //console.log('GET /fondo/' + req.params.id);
   			res.send(fondo);
   		} else {
-  			console.log('ERROR: ' + err);
+  			//console.log('ERROR: ' + err);
   		}
   	});
   };
 
 
   addfondoShow = function(req, res) {
-  	console.log('POST');
-  	console.log(req.body);
+  	//console.log('POST');
+  	//console.log(req.body);
 
   	var fondo = new fondoShow({
       origen:       req.body.origen,
@@ -74,9 +74,9 @@ module.exports = function(app) {
 
   	fondo.save(function(err) {
   		if(!err) {
-  			console.log('Created');
+  			//console.log('Created');
   		} else {
-  			console.log('ERROR: ' + err);
+  			//console.log('ERROR: ' + err);
   		}
   	});
 
@@ -95,9 +95,9 @@ module.exports = function(app) {
       fondo.link        =  req.body.link;
   		fondo.save(function(err) {
   			if(!err) {
-  				console.log('Updated');
+  				//console.log('Updated');
   			} else {
-  				console.log('ERROR: ' + err);
+  				//console.log('ERROR: ' + err);
   			}
   			res.send(fondo);
   		});
@@ -108,9 +108,9 @@ module.exports = function(app) {
   	fondoShow.findById(req.params.id, function(err, fondo) {
   		fondo.remove(function(err) {
   			if(!err) {
-  				console.log('Removed');
+  				//console.log('Removed');
   			} else {
-  				console.log('ERROR: ' + err);
+  				//console.log('ERROR: ' + err);
   			}
   		})
   	});
