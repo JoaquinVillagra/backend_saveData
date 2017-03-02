@@ -11,7 +11,9 @@ var userShow = new Schema({
 	crecer:      	{ type: Boolean },
 	emprender:      { type: Boolean },
 	financiar:      { type: Boolean },
-	innovar:      	{ type: Boolean }
+	innovar:      	{ type: Boolean },
+	anho: 			{ type: String 	},
+	region: 		{ type: String 	}
 }, {collection: 'userShow' });
 
 module.exports = mongoose.model('userShow', userShow);
