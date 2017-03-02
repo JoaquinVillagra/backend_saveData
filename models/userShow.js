@@ -12,7 +12,9 @@ var userShow = new Schema({
 	emprender:      { type: Boolean },
 	financiar:      { type: Boolean },
 	innovar:      	{ type: Boolean },
-	anho: 			{ type: String 	},
+	internacional:  { type: Boolean },
+	escalar:        { type: Boolean },
+	factura: 		{ type: String 	},
 	region: 		{ type: String 	}
 }, {collection: 'userShow' });
 

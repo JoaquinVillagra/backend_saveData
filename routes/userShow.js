@@ -56,7 +56,9 @@ module.exports = function(app) {
       emprender  : req.body.emprender,
       financiar  : req.body.financiar,
       innovar    : req.body.innovar,
-      anho       : req.body.anho,
+      internacional : req.body.internacional,
+      escalar    : req.body.escalar,
+      factura    : req.body.factura,
       region     : req.body.region
   	});
 
@@ -84,7 +86,9 @@ module.exports = function(app) {
       user.emprender  = req.body.emprender;
       user.financiar  = req.body.financiar;
       user.innovar    = req.body.innovar;
-      user.anho       = req.body.anho;
+      user.internacional = req.body.internacional;
+      user.escalar    = req.body.escalar;
+      user.factura    = req.body.factura;
       user.region     = req.body.region;
   		user.save(function(err) {
   			if(!err) {
