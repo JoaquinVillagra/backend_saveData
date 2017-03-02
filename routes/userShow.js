@@ -5,10 +5,10 @@ module.exports = function(app) {
   findAlluserShows = function(req, res) {
   	userShow.find(function(err, users) {
   		if(!err) {
-        console.log('GET /users')
+        //console.log('GET /users')
   			res.send(users);
   		} else {
-  			console.log('ERROR: ' + err);
+  			//console.log('ERROR: ' + err);
   		}
   	});
   };
@@ -16,10 +16,10 @@ module.exports = function(app) {
   findById = function(req, res) {
   	userShow.findById(req.params.id, function(err, user) {
   		if(!err) {
-        console.log('GET /user/' + req.params.id);
+        //console.log('GET /user/' + req.params.id);
   			res.send(user);
   		} else {
-  			console.log('ERROR: ' + err);
+  			//console.log('ERROR: ' + err);
   		}
   	});
   };
@@ -27,7 +27,7 @@ module.exports = function(app) {
   findByIdGoogle = function(req, res) {
     userShow.find({'id_google': req.params.id_google}).limit(1).exec(function(err, user) {
       if(!err) {
-        console.log('GET /user/' + req.params.id_google);
+        //console.log('GET /user/' + req.params.id_google);
         if(user.length == 0){
           res.send('ERROR');
         }
@@ -35,21 +35,20 @@ module.exports = function(app) {
           res.send(user[0]);
         }
       } else {
-        console.log('ERROR: ' + err);
+        //console.log('ERROR: ' + err);
       }
     });
   };
 
 
   adduserShow = function(req, res) {
-  	console.log('POST');
-  	console.log(req.body);
+  	//console.log('POST');
+  	//console.log(req.body);
 
   	var user = new userShow({
       id_google  : req.body.id_google,
   		nombre     : req.body.nombre,
       correo     : req.body.correo,
-      edad       : req.body.edad,
       empresa    : req.body.empresa,
       comercio   : req.body.comercio,
       crecer     : req.body.crecer,
@@ -64,9 +63,9 @@ module.exports = function(app) {
 
   	user.save(function(err) {
   		if(!err) {
-  			console.log('Created');
+  			//console.log('Created');
   		} else {
-  			console.log('ERROR: ' + err);
+  			//console.log('ERROR: ' + err);
   		}
   	});
 
@@ -79,7 +78,6 @@ module.exports = function(app) {
       user.id_google  = req.body.id_google;
       user.nombre     = req.body.nombre;
   		user.correo     = req.body.correo;
-  		user.edad       = req.body.edad;
   		user.empresa    = req.body.empresa;
   		user.comercio   = req.body.comercio;
   		user.crecer     = req.body.crecer;
@@ -92,9 +90,9 @@ module.exports = function(app) {
       user.region     = req.body.region;
   		user.save(function(err) {
   			if(!err) {
-  				console.log('Updated');
+  				//console.log('Updated');
   			} else {
-  				console.log('ERROR: ' + err);
+  				//console.log('ERROR: ' + err);
   			}
   			res.send(user);
   		});
@@ -105,9 +103,9 @@ module.exports = function(app) {
   	userShow.findById(req.params.id, function(err, user) {
   		user.remove(function(err) {
   			if(!err) {
-  				console.log('Eliminado');
+  				//console.log('Eliminado');
   			} else {
-  				console.log('ERROR: ' + err);
+  				//console.log('ERROR: ' + err);
   			}
   		})
   	});
