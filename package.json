@@ -1,6 +1,6 @@
 {
-  "name" : "node-api-rest-example",
-  "version" : "0.0.1",
+  "name" : "Solar_API_REST",
+  "version" : "1.0",
   "dependencies" : {
     "express" : "3.2.6",
     "mongoose" : "3.6.11"

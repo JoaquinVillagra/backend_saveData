@@ -2,20 +2,11 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var userShow = new Schema({
-	id_google: 		{ type: String  },
-	nombre: 		{ type: String  },
+	username: 		{ type: String  },
 	correo: 		{ type: String  },
-	empresa: 		{ type: String  },
-	comercio: 		{ type: String  },
-	crecer:      	{ type: Boolean },
-	emprender:      { type: Boolean },
-	financiar:      { type: Boolean },
-	innovar:      	{ type: Boolean },
-	internacional:  { type: Boolean },
-	escalar:        { type: Boolean },
-	factura: 		{ type: String 	},
-	region: 		{ type: String 	}
-}, {collection: 'userShow' });
+	password: 		{ type: String  },
+	token:          { type: String  }
+}, {collection: 'users', versionKey: false});
 
 module.exports = mongoose.model('userShow', userShow);
 
