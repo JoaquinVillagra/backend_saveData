@@ -1,6 +1,21 @@
 module.exports = function(app) {
 
+  function getTimeStamp() {
+    var now = new Date();
+    return ((now.getMonth() + 1) + '/' +
+            (now.getDate()) + '/' +
+             now.getFullYear() + " " +
+             now.getHours() + ':' +
+             ((now.getMinutes() < 10)
+                 ? ("0" + now.getMinutes())
+                 : (now.getMinutes())) + ':' +
+             ((now.getSeconds() < 10)
+                 ? ("0" + now.getSeconds())
+                 : (now.getSeconds())));
+  }
+
   var dataShow = require('../models/dataShow.js');
+  var userShow = require('../models/userShow.js');
 
   findAlldataShows = function(req, res) {
   	dataShow.find(function(err, data) {
@@ -29,19 +44,26 @@ module.exports = function(app) {
 
   adddataShow = function(req, res) {
   	var data = new dataShow({
-      date_time:    req.body.date_time,
+      date_time:    getTimeStamp(),
   		value1:       req.body.value1,
       value2:       req.body.value2
   	});
 
-  	data.save(function(err) {
-  		if(!err) {
-  			console.log('Created');
-  		} else {
-  			console.log('ERROR: ' + err);
-  		}
-  	});
-  	res.send(data);
+    userShow.find({username: req.body.username, password: req.body.password}, function(err, filtro) {
+      if(filtro!="") {
+        data.save(function(err) {
+          if(!err) {
+            console.log('Created');
+          } else {
+            console.log('ERROR: ' + err);
+          }
+        });
+        res.send(data);
+      }
+      else {
+        res.send("User not Auth");
+      }
+    });
   };
 
   //PUT - Update a register already exists
@@ -59,7 +81,7 @@ module.exports = function(app) {
   			res.send(data);
   		});
   	});
-  }
+  };
 
   deletedataShow = function(req, res) {
   	dataShow.findById(req.params.id, function(err, data) {
@@ -71,7 +93,7 @@ module.exports = function(app) {
   			}
   		})
   	});
-  }
+  };
 
   //Link routes and functions
   app.get('/data', findAlldataShows);
