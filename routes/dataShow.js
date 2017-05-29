@@ -20,7 +20,7 @@ module.exports = function(app) {
   findAlldataShows = function(req, res) {
   	dataShow.find(function(err, data) {
   		if(!err) {
-        console.log('GET /data')
+        //console.log('GET /data')
   			res.send(data);
   		} else {
   			var data = [];
@@ -32,7 +32,7 @@ module.exports = function(app) {
   findById = function(req, res) {
   	dataShow.findById(req.params.id, function(err, data) {
   		if(!err) {
-        console.log('GET /data/' + req.params.id);
+        //console.log('GET /data/' + req.params.id);
   			res.send(data);
   		} else {
         var data = [];
@@ -53,9 +53,9 @@ module.exports = function(app) {
       if(filtro!="") {
         data.save(function(err) {
           if(!err) {
-            console.log('Created');
+            //console.log('Created');
           } else {
-            console.log('ERROR: ' + err);
+            //console.log('ERROR: ' + err);
           }
         });
         res.send(data);
@@ -74,9 +74,9 @@ module.exports = function(app) {
       data.value2       =  req.body.value2;
   		data.save(function(err) {
   			if(!err) {
-  				console.log('Updated');
+  				//console.log('Updated');
   			} else {
-  				console.log('ERROR: ' + err);
+  				//console.log('ERROR: ' + err);
   			}
   			res.send(data);
   		});
@@ -87,9 +87,9 @@ module.exports = function(app) {
   	dataShow.findById(req.params.id, function(err, data) {
   		data.remove(function(err) {
   			if(!err) {
-  				console.log('Removed');
+  				//console.log('Removed');
   			} else {
-  				console.log('ERROR: ' + err);
+  				//console.log('ERROR: ' + err);
   			}
   		})
   	});

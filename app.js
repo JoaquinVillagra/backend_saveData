@@ -17,14 +17,14 @@ app.get('/', function(req, res) {
 routes = require('./routes/userShow')(app);
 routes = require('./routes/dataShow')(app);
 
-mongoose.connect('mongodb://localhost/Solar', function(err, res) {
+mongoose.connect('mongodb://138.197.22.39/Solar', function(err, res) {
 	if(err) {
-		console.log('ERROR: connecting to Database. ' + err);
+		//console.log('ERROR: connecting to Database. ' + err);
 	} else {
-		console.log('Connected to Database');
+		//console.log('Connected to Database');
 	}
 });
 
 server.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+  //console.log("Node server running on http://localhost:3000");
 });

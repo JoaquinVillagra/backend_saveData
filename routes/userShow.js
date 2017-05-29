@@ -5,10 +5,10 @@ module.exports = function(app) {
   findAlluserShows = function(req, res) {
   	userShow.find(function(err, users) {
   		if(!err) {
-        console.log('GET /users')
+        //console.log('GET /users')
   			res.send(users);
   		} else {
-  			console.log('ERROR: ' + err);
+  			//console.log('ERROR: ' + err);
   		}
   	});
   };
@@ -16,7 +16,7 @@ module.exports = function(app) {
   findById = function(req, res) {
   	userShow.findById(req.params.id, function(err, user) {
   		if(!err) {
-        console.log('GET /user/' + req.params.id);
+        //console.log('GET /user/' + req.params.id);
   			res.send(user);
   		} else {
   			var data = [];
@@ -35,9 +35,9 @@ module.exports = function(app) {
 
   	user.save(function(err) {
   		if(!err) {
-  			console.log('Created');
+  			//console.log('Created');
   		} else {
-  			console.log('ERROR: ' + err);
+  			//console.log('ERROR: ' + err);
   		}
   	});
   	res.send(user);
@@ -52,9 +52,9 @@ module.exports = function(app) {
       token     = user.token;
   		user.save(function(err) {
   			if(!err) {
-  				console.log('Updated');
+  				//console.log('Updated');
   			} else {
-  				console.log('ERROR: ' + err);
+  				//console.log('ERROR: ' + err);
   			}
   			res.send(user);
   		});
@@ -65,9 +65,9 @@ module.exports = function(app) {
   	userShow.findById(req.params.id, function(err, user) {
   		user.remove(function(err) {
   			if(!err) {
-  				console.log('Eliminado');
+  				//console.log('Eliminado');
   			} else {
-  				console.log('ERROR: ' + err);
+  				//console.log('ERROR: ' + err);
   			}
   		})
   	});
