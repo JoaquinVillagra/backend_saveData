@@ -29,7 +29,8 @@ Modelo JSON a usar en Insert
 	"username": "ignacio",
     "password": "123456",
     "value1": "valor1",
-    "value2": "valor2"
+    "value2": "valor2",
+    "value3": "valor3"
 }
 
 *Data*
