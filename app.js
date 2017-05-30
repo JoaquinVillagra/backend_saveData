@@ -26,5 +26,5 @@ mongoose.connect('mongodb://138.197.22.39/Solar', function(err, res) {
 });
 
 server.listen(3030, function() {
-  //console.log("Node server running on http://localhost:3000");
+  //console.log("Node server running on http://localhost:3030");
 });
