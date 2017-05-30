@@ -46,7 +46,8 @@ module.exports = function(app) {
   	var data = new dataShow({
       date_time:    getTimeStamp(),
   		value1:       req.body.value1,
-      value2:       req.body.value2
+      value2:       req.body.value2,
+      value3:       req.body.value3
   	});
 
     userShow.find({username: req.body.username, password: req.body.password}, function(err, filtro) {
@@ -72,6 +73,7 @@ module.exports = function(app) {
       data.date_time    =  req.body.date_time;
       data.value1       =  req.body.value1;
       data.value2       =  req.body.value2;
+      data.value3       =  req.body.value3;
   		data.save(function(err) {
   			if(!err) {
   				//console.log('Updated');
