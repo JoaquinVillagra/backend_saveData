@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-  function getTimeStamp() {
+  /*function getTimeStamp() {
     var now = new Date();
     return ((now.getMonth() + 1) + '/' +
             (now.getDate()) + '/' +
@@ -12,7 +12,7 @@ module.exports = function(app) {
              ((now.getSeconds() < 10)
                  ? ("0" + now.getSeconds())
                  : (now.getSeconds())));
-  }
+  }*/
 
   var dataShow = require('../models/dataShow.js');
   var userShow = require('../models/userShow.js');
@@ -44,10 +44,11 @@ module.exports = function(app) {
 
   adddataShow = function(req, res) {
   	var data = new dataShow({
-      date_time:    getTimeStamp(),
-  		value1:       req.body.value1,
-      value2:       req.body.value2,
-      value3:       req.body.value3
+      pregunta_id:         req.body.pregunta_id,
+  		alternativa_1:       req.body.alternativa_1,
+      alternativa_2:       req.body.alternativa_2,
+      alternativa_3:       req.body.alternativa_3,
+      alternativa_4:       req.body.alternativa_4
   	});
 
     userShow.find({username: req.body.username, password: req.body.password}, function(err, filtro) {
@@ -71,9 +72,11 @@ module.exports = function(app) {
   updatedataShow = function(req, res) {
   	dataShow.findById(req.params.id, function(err, data) {
       data.date_time    =  req.body.date_time;
-      data.value1       =  req.body.value1;
-      data.value2       =  req.body.value2;
-      data.value3       =  req.body.value3;
+      data.pregunta_id         =  req.body.pregunta_id;
+      data.alternativa_1       =  req.body.alternativa_1;
+      data.alternativa_2       =  req.body.alternativa_2;
+      data.alternativa_3       =  req.body.alternativa_3;
+      data.alternativa_4       =  req.body.alternativa_4;
   		data.save(function(err) {
   			if(!err) {
   				//console.log('Updated');

@@ -24,13 +24,23 @@
 - /user/:id = Petición PUT Actualiza registro de usuario existente referenciado por el id
 - /user/:id = Petición DELETE
 
-Modelo JSON a usar en Insert
+*Preguntas*
+- /question/last = Petición GET Obtiene la ultima pregunta ingresada
+- /questions     = Petición GET Toda la data del sistema
+- /question/:id  = Petición GET Lista data particular según id
+- /question      = Petición POST Añade un nuevo registro data
+- /question/:id  = Petición PUT Actualiza registro de data existente referenciado por el id
+- /question/:id  = Petición DELETE
+
+Modelo JSON a usar en Insert de Pregunta
 {
 	"username": "ignacio",
     "password": "123456",
-    "value1": "valor1",
-    "value2": "valor2",
-    "value3": "valor3"
+    "pregunta": "#",
+    "alternativa_1": "#",
+    "alternativa_2": "#",
+    "alternativa_3": "#",
+    "alternativa_4": "#"
 }
 
 *Data*
@@ -39,3 +49,14 @@ Modelo JSON a usar en Insert
 - /data     = Petición POST Añade un nuevo registro data
 - /data/:id = Petición PUT Actualiza registro de data existente referenciado por el id
 - /data/:id = Petición DELETE
+
+Modelo JSON a usar en Insert de Data
+{
+	"username": "ignacio",
+    "password": "123456",
+    "pregunta_id": "#",
+    "alternativa_1": "#",
+    "alternativa_2": "#",
+    "alternativa_3": "#",
+    "alternativa_4": "#"
+}

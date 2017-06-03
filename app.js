@@ -16,6 +16,7 @@ app.get('/', function(req, res) {
 
 routes = require('./routes/userShow')(app);
 routes = require('./routes/dataShow')(app);
+routes = require('./routes/questionShow')(app);
 
 mongoose.connect('mongodb://138.197.22.39/Solar', function(err, res) {
 	if(err) {
