@@ -28,37 +28,41 @@ module.exports = function(app) {
   };
 
   findLast = function(req, res) {
-    var pregunta = questionShow.find().sort({id: -1}).limit(1);
-    res.send(pregunta);
+    questionShow.find().sort({id: -1}).limit(1).exec(function(err, data) {
+      res.send(data);
+    })
   };
 
   addquestionShow = function(req, res) {
-    var pregunta = questionShow.find().sort({id: -1}).limit(1);
-    var id   = parseInt(pregunta.id)+1;
-  	var data = new questionShow({
-      id:             id,   
-      pregunta:       req.body.pregunta,
-      alternativa_1:  req.body.alternativa_1,
-      alternativa_2:  req.body.alternativa_2,
-      alternativa_3:  req.body.alternativa_3,
-      alternativa_4:  req.body.alternativa_4,
-  	});
+    questionShow.find().sort({id: -1}).limit(1).exec(function(err, data) {
+      //console.log(data[0]);
+      var id = parseInt(data[0].id)+1;
+      console.log(id);
+    	var data = new questionShow({
+        id:             id,   
+        pregunta:       req.body.pregunta,
+        alternativa_1:  req.body.alternativa_1,
+        alternativa_2:  req.body.alternativa_2,
+        alternativa_3:  req.body.alternativa_3,
+        alternativa_4:  req.body.alternativa_4,
+    	});
 
-    userShow.find({username: req.body.username, password: req.body.password}, function(err, filtro) {
-      if(filtro!="") {
-        data.save(function(err) {
-          if(!err) {
-            //console.log('Created');
-          } else {
-            //console.log('ERROR: ' + err);
-          }
-        });
-        res.send(data);
-      }
-      else {
-        res.send("User not Auth");
-      }
-    });
+      userShow.find({username: req.body.username, password: req.body.password}, function(err, filtro) {
+        if(filtro!="") {
+          data.save(function(err) {
+            if(!err) {
+              //console.log('Created');
+            } else {
+              //console.log('ERROR: ' + err);
+            }
+          });
+          res.send(data);
+        }
+        else {
+          res.send("User not Auth");
+        }
+      });
+    })
   };
 
   //PUT - Update a register already exists
