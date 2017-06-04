@@ -6,7 +6,7 @@ module.exports = function(app) {
   findAllquestionShows = function(req, res) {
   	questionShow.find(function(err, data) {
   		if(!err) {
-        console.log('GET /data')
+        //console.log('GET /data')
   			res.send(data);
   		} else {
   			var data = [];
@@ -18,7 +18,7 @@ module.exports = function(app) {
   findById = function(req, res) {
   	questionShow.find({id: req.params.id}, function(err, data) {
   		if(!err) {
-        //console.log('GET /data/' + req.params.id);
+        ////console.log('GET /data/' + req.params.id);
   			res.send(data);
   		} else {
         var data = [];
@@ -35,9 +35,9 @@ module.exports = function(app) {
 
   addquestionShow = function(req, res) {
     questionShow.find().sort({id: -1}).limit(1).exec(function(err, data) {
-      //console.log(data[0]);
+      ////console.log(data[0]);
       var id = parseInt(data[0].id)+1;
-      console.log(id);
+      //console.log(id);
     	var data = new questionShow({
         id:             id,   
         pregunta:       req.body.pregunta,
@@ -51,9 +51,9 @@ module.exports = function(app) {
         if(filtro!="") {
           data.save(function(err) {
             if(!err) {
-              //console.log('Created');
+              ////console.log('Created');
             } else {
-              //console.log('ERROR: ' + err);
+              ////console.log('ERROR: ' + err);
             }
           });
           res.send(data);
@@ -76,9 +76,9 @@ module.exports = function(app) {
       data.alternativa_4 =  req.body.alternativa_4,
   		data.save(function(err) {
   			if(!err) {
-  				//console.log('Updated');
+  				////console.log('Updated');
   			} else {
-  				//console.log('ERROR: ' + err);
+  				////console.log('ERROR: ' + err);
   			}
   			res.send(data);
   		});
@@ -89,9 +89,9 @@ module.exports = function(app) {
   	questionShow.findById(req.params.id, function(err, data) {
   		data.remove(function(err) {
   			if(!err) {
-  				//console.log('Removed');
+  				////console.log('Removed');
   			} else {
-  				//console.log('ERROR: ' + err);
+  				////console.log('ERROR: ' + err);
   			}
   		})
   	});
